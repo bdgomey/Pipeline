@@ -101,7 +101,7 @@ Set up EKS
         sudo mv /tmp/eksctl /usr/local/bin
     
     create cluster
-        eksctl create cluster --name name --region us-east-2 --node-type t3.micro --nodes 2
+        eksctl create cluster --name Jenkins_Cluster --region us-east-2 --node-type t2.medium --nodes 2
 
 
     eksctl get clusters
