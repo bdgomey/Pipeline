@@ -94,7 +94,6 @@ Set up EKS
     download and install eksctl
 
     eksctl create cluster --name name --version 1.21 --node-type t3.micro --nodes 2 --managed
-    eksctl create cluster --name EKSCluster --fargate
 
     eksctl get clusters
     eksctl delete cluster --name name
