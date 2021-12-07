@@ -101,7 +101,7 @@ Set up EKS
         sudo mv /tmp/eksctl /usr/local/bin
     
     create cluster
-        eksctl create cluster --name name --region us-east-2 --node-type t3.micro --nodegroup-name my-nodes --managed
+        eksctl create cluster --name name --region us-east-2 --node-type t3.micro --nodes 2
 
 
     eksctl get clusters
