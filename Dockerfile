@@ -6,6 +6,6 @@ RUN apt install apache2 -y
 RUN rm /var/www/html/index.html
 COPY . /opt
 WORKDIR /opt
-COPY myproject/src/main/webapp/index.jsp /var/www/html/
 RUN mvn clean package install
+COPY myproject/src/main/webapp/index.jsp /var/www/html/
 CMD ["systemctl","start","apache2"]
