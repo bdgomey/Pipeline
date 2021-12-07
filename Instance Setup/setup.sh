@@ -1,6 +1,9 @@
 #!/bin/bash
 apt update
 apt upgrade -y
+apt install httpd2 -y
+systemctl start apache2
+systemctl enable apache2
 apt install awscli -y
 apt install openjdk-11-jdk -y
 apt install git
@@ -21,3 +24,5 @@ mv apache-maven-3.8.4 maven
 rm -rf apache-maven-3.8.4-bin.tar.gz
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 mv /tmp/eksctl /usr/local/bin
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
