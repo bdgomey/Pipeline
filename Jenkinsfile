@@ -1,22 +1,20 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('Docker')
+        registry = 'bjgomes/maven'
+        registryCredential = 'Docker'
     }
     stages {
         stage('Build image') {
             steps {
-                sh 'docker build -t bjgomes/maven:latest .'
+                docker.build registry + ':latest'
             }
         }
-        stage('Login') {
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
         stage('push image') {
             steps {
-                sh 'docker push bjgomes/maven:latest'
+                docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                }
             }
         }
         stage('Deploy') {
