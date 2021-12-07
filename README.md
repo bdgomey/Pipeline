@@ -89,12 +89,20 @@ Run first pipeline
 
 run pipeline
 
+Set up AWS
+
+    Ensure AWSCLI is installed (sudo apt install awscli)
+    add global credentials (aws configure)
+
 Set up EKS
 
     download and install eksctl
+        curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+        sudo mv /tmp/eksctl /usr/local/bin
+    
+    create cluster
+        eksctl create cluster --name name --region us-east-2 --node-type t3.micro --nodegroup-name my-nodes --managed
 
-    eksctl create cluster --name name --version 1.21 --node-type t3.micro --nodes 2 --managed
-    eksctl create cluster --name EKSCluster --fargate
 
     eksctl get clusters
     eksctl delete cluster --name name
