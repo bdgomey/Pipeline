@@ -1,43 +1,12 @@
-install Java
-
-    yes "" | command
-    sudo apt-get update
-    sudo apt install openjdk-11-jdk -y
-    
-Install Maven
-
-    cd /opt
-    sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
-    sudo tar -xzvf apache-maven-3.8.4-bin.tar.gz
-    sudo mv apache-maven-3.8.4 maven
-    sudo rm -rf apache-maven-3.8.4-bin.tar.gz
-
-Install git
-
-    sudo apt install git
-    git config --global user.name "Brian"
-    git config --global user.email "brian.james.gomes@gmail.com"
+run setup.sh script
 
 
-
-Install Jenkins
-
-    curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
-        /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-    echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-        https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-        /etc/apt/sources.list.d/jenkins.list > /dev/null
-    sudo apt-get update
-    sudo apt-get install jenkins
-
-Install Docker
-
-    sudo apt install docker.io -y
-    sudo usermod -aG docker $USER
-    sudo usermod -aG docker jenkins
-
+sudo usermod -aG docker $USER
+sudo usermod -aG docker jenkins
+export PATH=/opt/maven/bin:$PATH
 sudo service jenkins restart
-Restart terminal
+restart terminal
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ___
 
 
@@ -89,6 +58,8 @@ Run first pipeline
 
 run pipeline
 
+Set up EKS Clusters and deploy to production
+
 Set up AWS
 
     Ensure AWSCLI is installed (sudo apt install awscli)
@@ -96,13 +67,7 @@ Set up AWS
 
 Set up EKS
 
-    download and install eksctl
-        curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-        sudo mv /tmp/eksctl /usr/local/bin
     
-    create cluster
-        eksctl create cluster --name Jenkins_Cluster --region us-east-2 --node-type t2.medium --nodes 2
-
 
     eksctl get clusters
     eksctl delete cluster --name name
