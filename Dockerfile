@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM openjdk:11-slim-buster as build
 
 # Update the repository sources list
 RUN apt-get update
