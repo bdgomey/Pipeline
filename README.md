@@ -1,18 +1,29 @@
-run setup.sh script
+# Create VM in AWS
 
+## run setup.sh script once VM is provisioned
 
-sudo usermod -aG docker $USER
-sudo usermod -aG docker jenkins
-export PATH=/opt/maven/bin:$PATH
-sudo service jenkins restart
-restart terminal
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+    chmod +x setup.sh
+    sudo ./setup.sh
+
+## Run the following commands
+
+    sudo usermod -aG docker $USER
+    sudo usermod -aG docker jenkins
+    export PATH=/opt/maven/bin:$PATH
+    sudo service jenkins restart
+    restart terminal
+
 ___
 
 
-Configure Jenkins
+# Configure Jenkins
+
+## Login to jenkins and create account
 
     sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+## Set up jenkins tools
+
     install suggested plugins
     install plugins
         1. maven integration
@@ -33,41 +44,30 @@ Configure Jenkins
            1. Name: Maven
            2. MAVEN_HOME: /opt/maven
 
-Run first job
+## set-up credentials in jenkins
 
-    do a top level maven job to show maven is working
+    add docker creds
+    add aws creds
 
-Run first pipeline
+___
 
-    1. create pipeline
-    2. initialize github webhook with webhook relay
+# Run first pipeline
 
-        set up webhook with Github
-
-
-            install WebHookRelay
-                1. sudo wget -O /usr/local/bin/relay https://storage.googleapis.com/webhookrelay/downloads/relay-linux-amd64
-                2. sudo chmod +wx /usr/local/bin/relay
-                3. Login
-                1. relay login -k your-token-key -s your-token-secret
-                4. Set up forwarding
-                1. relay forward --bucket github-jenkins http://localhost:8080/github-webhook/
-
-            Guide: https://webhookrelay.com/blog/2017/11/23/github-jenkins-guide/
+    1. create pipeline in jenkins
+    2. initialize github webhook 
+       1. http://<public-IP>/github-webhook/
     3. Set up docker credentials using token
 
 run pipeline
+___
+# Set up EKS Clusters and deploy to production
 
-Set up EKS Clusters and deploy to production
-
-Set up AWS
+## Set up AWS
 
     Ensure AWSCLI is installed (sudo apt install awscli)
     add global credentials (aws configure)
 
-Set up EKS
-
-    
+## Set up EKS    
 
     eksctl get clusters
     eksctl delete cluster --name name
