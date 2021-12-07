@@ -1,8 +1,8 @@
 install Java
 
-    sudo add-apt-repository ppa:openjdk-r/ppa
+    yes "" | command
     sudo apt-get update
-    sudo apt install openjdk-11-jdk
+    sudo apt install openjdk-11-jdk -y
     
 Install Maven
 
@@ -10,7 +10,7 @@ Install Maven
     sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
     sudo tar -xzvf apache-maven-3.8.4-bin.tar.gz
     sudo mv apache-maven-3.8.4 maven
-    sudo rm -rf apache-maven-3.8.4
+    sudo rm -rf apache-maven-3.8.4-bin.tar.gz
 
 Install git
 
@@ -89,5 +89,13 @@ Run first pipeline
 
 run pipeline
 
+Set up EKS
 
+    download and install eksctl
+
+    eksctl create cluster --name name --version 1.21 --node-type t3.micro --nodes 2 --managed
+    eksctl create cluster --name EKSCluster --fargate
+
+    eksctl get clusters
+    eksctl delete cluster --name name
 
