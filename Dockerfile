@@ -14,4 +14,4 @@ RUN mvn clean package install
 COPY src/main/webapp/index.jsp /var/www/html/
 
 EXPOSE 80
-CMD apachectl -D FOREGROUND
+CMD [“/usr/sbin/apache2”, “-D”, “FOREGROUND”]
