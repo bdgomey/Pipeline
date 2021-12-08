@@ -1,8 +1,4 @@
-FROM openjdk:11-slim-buster as build
+FROM tomcat:latest
+RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
+COPY ./*.war /usr/local/tomcat/webapps
 
-RUN apt-get update
-RUN apt-get install -y maven
-COPY . /opt
-WORKDIR /opt
-RUN mvn package
-CMD ["java","-cp","target/docker-service-1.0-SNAPSHOT.jar","org.ea.service.App"]
