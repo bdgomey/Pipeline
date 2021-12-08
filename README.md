@@ -2,8 +2,14 @@
 
 ## run setup.sh script once VM is provisioned
 
-    chmod +x setup.sh
-    sudo ./setup.sh
+    create a file called setup.sh in the current directory
+    copy contents of jenkins.sh in the repository to that file and save it
+    
+    Set the execution bit for the bash script
+        chmod +x setup.sh
+    
+    Run the script (initial jenkins password will be the final output)
+        sudo ./setup.sh
 
 ## Run the following commands
 
@@ -11,6 +17,9 @@
     sudo usermod -aG docker jenkins
     export PATH=/opt/maven/bin:$PATH
     sudo service jenkins restart
+    cd Pipeline
+    mkdir ~/.kube
+    cp config.yaml ~/.kube
     restart terminal
 
 ___
