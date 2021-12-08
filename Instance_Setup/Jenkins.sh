@@ -9,6 +9,7 @@ apt install openjdk-11-jdk -y
 apt install git
 git config --global user.name "Brian"
 git config --global user.email "brian.james.gomes@gmail.com"
+git config --global credential.helper store
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | tee \
         /usr/share/keyrings/jenkins-keyring.asc > /dev/null
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
@@ -17,6 +18,11 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 apt-get update
 apt-get install jenkins -y
 apt install docker.io -y
+git clone https://github.com/bdgomey/Pipeline.git
+mv Pipeline/Instance_Setup/tomcatdown.sh ~/ 
+mv Pipeline/Instance_Setup/tomcatup.sh ~/
+chmod +x tomcatdown.sh
+chmod +x tomcatup.sh
 cd /opt
 wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
 tar -xzvf apache-maven-3.8.4-bin.tar.gz
