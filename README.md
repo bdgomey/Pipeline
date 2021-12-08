@@ -35,6 +35,7 @@ ___
         7. blue ocean
         8. cloudbees aws credentials
         9. kubernetes continiuous deploy
+        10. deploy to container
     set up global tools
         1. jdk: 
            1. Name: JAVA_HOME

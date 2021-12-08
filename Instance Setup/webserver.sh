@@ -10,6 +10,4 @@ cd /opt
 wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56.tar.gz
 tar -xzvf apache-tomcat-9.0.56.tar.gz
 mv apache-tomcat-9.0.56 tomcat
-chown -R ubuntu:ubuntu tomcat
-chmod +x tomcat/bin/startup.sh
-chmod +x tomcat/bin/shutdown.sh
+
