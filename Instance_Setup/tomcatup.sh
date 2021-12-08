@@ -1,1 +1,0 @@
-/opt/tomcat/bin/startup.sh
