@@ -10,13 +10,13 @@ pipeline {
     stages {
         stage('clean and package') {
             steps {
-                sh 'mvn clean package install'
+                sh 'mvn clean package'
             }
         }
         
         stage('Build image') {
             steps {
-                sh 'docker build -t bjgomes/maven:latest .'
+                sh 'docker build -t bjgomes/maven_webapp:latest .'
             }
         }
         stage('Login') {
