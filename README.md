@@ -34,6 +34,7 @@ ___
         6. kubernetes cli
         7. blue ocean
         8. cloudbees aws credentials
+        9. kubernetes continiuous deploy
     set up global tools
         1. jdk: 
            1. Name: JAVA_HOME
@@ -74,6 +75,12 @@ ___
 
     sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
     
+## install EKSCTL 
+
+    curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+
+    sudo mv /tmp/eksctl /usr/local/bin
+
 ## Set up EKS    
 
     eksctl get clusters

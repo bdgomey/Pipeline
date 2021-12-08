@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         CREDENTIALS=credentials('Docker')
+        AWS_Credentials=('AWS')
     }
     stages {
         stage('Build image') {
