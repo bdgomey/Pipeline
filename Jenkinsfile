@@ -37,11 +37,11 @@ pipeline {
             steps {
                 sh 'echo this step saved for kubernetes!!!'
             }
-        }
+        }    
+    }
     post {
         always {
             sh 'docker logout'
-            }
         }
     }
 }
