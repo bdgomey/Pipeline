@@ -13,14 +13,11 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-    }
-    stages {
         stage('move webapp.war') {
             steps {
                 sh 'cp var/lib/jenkins/workspace/Pipeline/webapp/target/webapp.war /var/lib/jenkins/workspace/Pipeline'
             }
         }
-    }
         stage('Build image') {
             steps {
                 sh 'docker build -t bjgomes/maven_webapp:latest .'
@@ -44,7 +41,7 @@ pipeline {
     post {
         always {
             sh 'docker logout'
+            }
         }
     }
 }
-
