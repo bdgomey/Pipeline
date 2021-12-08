@@ -8,7 +8,7 @@ RUN rm tomcat/webapps/manager/META-INF/context.xml
 RUN rm tomcat/conf/tomcat-users.xml
 COPY tomcat-users.xml tomcat/conf/
 COPY context.xml tomcat/webapps/manager/META-INF
-COPY /var/lib/jenkins/workspace/Pipeline/webapp/target/webapp.war /tomcat/webapps
+COPY webapp.war /tomcat/webapps
 RUN cd /home/ubuntu
 RUN chmod +x tomcat/bin/tomcatup.sh
 CMD ["./tomcat/bin/tomcatup.sh"]
