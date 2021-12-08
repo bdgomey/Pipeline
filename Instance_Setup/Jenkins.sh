@@ -1,7 +1,7 @@
 #!/bin/bash
 apt update
 apt upgrade -y
-apt install httpd2 -y
+apt install apache2 -y
 systemctl start apache2
 systemctl enable apache2
 apt install awscli -y
@@ -19,10 +19,6 @@ apt-get update
 apt-get install jenkins -y
 apt install docker.io -y
 git clone https://github.com/bdgomey/Pipeline.git
-mv Pipeline/Instance_Setup/tomcatdown.sh ~/ 
-mv Pipeline/Instance_Setup/tomcatup.sh ~/
-chmod +x tomcatdown.sh
-chmod +x tomcatup.sh
 cd /opt
 wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
 tar -xzvf apache-maven-3.8.4-bin.tar.gz
@@ -32,3 +28,4 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 mv /tmp/eksctl /usr/local/bin
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+cat /var/lib/jenkins/secrets/initialAdminPassword
