@@ -33,6 +33,7 @@ ___
         5. kubernetes
         6. kubernetes cli
         7. blue ocean
+        8. cloudbees aws credentials
     set up global tools
         1. jdk: 
            1. Name: JAVA_HOME
@@ -55,7 +56,7 @@ ___
 
     1. create pipeline in jenkins
     2. initialize github webhook 
-       1. http://<public-IP>/github-webhook/
+       1. http://3.139.92.140:8080/github-webhook/
     3. Set up docker credentials using token
 
 run pipeline
