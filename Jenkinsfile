@@ -30,7 +30,7 @@ pipeline {
 		}
         stage('push image') {
             steps {
-                sh 'docker push bjgomes/maven:latest'
+                sh 'docker push bjgomes/maven_webapp:latest'
             }
         }
         stage('Deploy') {
