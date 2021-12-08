@@ -9,6 +9,5 @@ RUN rm tomcat/conf/tomcat-users.xml
 COPY tomcat-users.xml tomcat/conf/
 COPY context.xml tomcat/webapps/manager/META-INF
 COPY webapp.war /tomcat/webapps
-RUN cd /home/ubuntu
 RUN chmod +x tomcat/bin/tomcatup.sh
 CMD ["./tomcat/bin/tomcatup.sh"]
