@@ -1,13 +1,22 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven'
+    }
     environment {
         CREDENTIALS=credentials('Docker')
         AWS_Credentials=('AWS')
     }
     stages {
+        stage('clean and package') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        
         stage('Build image') {
             steps {
-                sh 'docker build -t bjgomes/maven:latest .'
+                sh 'docker build -t bjgomes/maven_webapp:latest .'
             }
         }
         stage('Login') {
