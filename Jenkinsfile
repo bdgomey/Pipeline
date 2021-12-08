@@ -15,7 +15,7 @@ pipeline {
         }
         stage('move webapp.war') {
             steps {
-                sh 'cp var/lib/jenkins/workspace/Pipeline/webapp/target/webapp.war /var/lib/jenkins/workspace/Pipeline'
+                sh 'cp /var/lib/jenkins/workspace/Pipeline/webapp/target/webapp.war /var/lib/jenkins/workspace/Pipeline'
             }
         }
         stage('Build image') {
