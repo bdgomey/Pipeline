@@ -4,7 +4,6 @@ kind: ClusterConfig
 metadata:
   name: pipeline
   region: us-east-2
-  version: 1.21
 
 managedNodeGroups:
   - name: primary
