@@ -48,7 +48,7 @@ ___
 ## set-up credentials in jenkins
 
     add docker creds
-    add aws creds
+    add my aws creds
 
 ___
 
