@@ -2,6 +2,7 @@ FROM ubuntu:20.04
 
 
 RUN cd /opt
+RUN apt install wget
 RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56.tar.gz
 RUN tar -xzvf apache-tomcat-9.0.56.tar.gz
 RUN mv apache-tomcat-9.0.56 tomcat
