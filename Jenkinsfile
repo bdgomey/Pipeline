@@ -29,6 +29,7 @@ pipeline {
                 script {
                     kubernetesDeploy(configs: 'deployment.yaml', kubeconfigId: 'K8s', enableConfigSubstitution: true)
                 }
+                sh 'kubectl rollout restart deployment maven-app-deploy'
             }
         }
     }
