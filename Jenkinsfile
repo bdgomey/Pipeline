@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
+                sh 'mvn clean install'
                 sh 'docker build -t bjgomes/maven:latest .'
             }
         }
