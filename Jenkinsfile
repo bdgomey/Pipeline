@@ -1,30 +1,36 @@
-node ("jenkins_slave") {
-  def image
-  def mvnHome = tool 'Maven3'
-     stage ('checkout') {
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/bdgomey/Pipeline.git']]])      
-        }
-   
-    stage ('Build') {
-            sh 'mvn clean install'           
-        }
-       
-       
-    stage ('Docker Build') {
-         // Build and push image with Jenkins' docker-plugin
-            withDockerRegistry([credentialsId: "Docker", url: "https://index.docker.io/v1/"]) {
-            image = docker.build("bjgomes/maven")
-            image.push()    
+pipeline {
+    agent any
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('Docker')
+    }
+    stages {
+        stage('Build image') {
+            steps {
+                sh 'docker build -t bjgomes/maven:latest .'
             }
         }
-
-      stage ('K8S Deploy') {
-       
-                kubernetesDeploy(
-                    configs: 'deployment.yaml',
-                    kubeconfigId: 'K8s',
-                    enableConfigSubstitution: true
-                    )               
+        stage('Login') {
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+        stage('push image') {
+            steps {
+                sh 'docker push bjgomes/maven:latest'
+            }
         }
-    
+        stage ('K8S Deploy') {
+       
+            kubernetesDeploy(
+                configs: 'deployment.yaml',
+                kubeconfigId: 'K8s',
+                enableConfigSubstitution: true
+                )               
+        }
+    }
+    post {
+        always {
+            sh 'docker logout'
+        }
+    }
 }
