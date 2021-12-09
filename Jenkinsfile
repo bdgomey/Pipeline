@@ -32,6 +32,15 @@ pipeline {
                 )
             }
         }
+        stage ('K8S Service') {
+            steps {
+                kubernetesDeploy(
+                configs: 'service.yaml',
+                kubeconfigId: 'K8s',
+                enableConfigSubstitution: true
+                )
+            }
+        }
     }
     post {
         always {
