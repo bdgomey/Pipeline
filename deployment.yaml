@@ -7,11 +7,7 @@ spec:
     matchLabels:
       app: maven_app
   replicas: 2
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+
   template:
     metadata:
       labels:
