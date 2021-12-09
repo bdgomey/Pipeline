@@ -13,7 +13,7 @@ node ("jenkins_slave") {
     stage ('Docker Build') {
          // Build and push image with Jenkins' docker-plugin
             withDockerRegistry([credentialsId: "Docker", url: "https://index.docker.io/v1/"]) {
-            image = docker.build("bjgomes/maven", "maven")
+            image = docker.build("bjgomes/maven")
             image.push()    
             }
         }
