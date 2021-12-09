@@ -25,20 +25,12 @@ pipeline {
         }
         stage ('K8S Deploy') {
             steps {
-                kubernetesDeploy(
-                configs: 'deployment.yaml',
-                kubeconfigId: 'K8s',
-                enableConfigSubstitution: true
-                )
+                sh 'kubectl apply -f deployment.yaml'
             }
         }
         stage ('K8S Service') {
             steps {
-                kubernetesDeploy(
-                configs: 'service.yaml',
-                kubeconfigId: 'K8s',
-                enableConfigSubstitution: true
-                )
+                sh 'kubectl apply -f service.yaml'
             }
         }
     }
