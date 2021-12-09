@@ -15,10 +15,6 @@ spec:
       containers:
       - name: maven-app-deploy
         image: bjgomes/maven:latest
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         ports:
         - containerPort: 8085
 --- 
