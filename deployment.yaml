@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-maven-app:v2
+  name: my-maven-app
 spec:
   replicas: 2
   selector:
@@ -13,7 +13,7 @@ spec:
         app: maven-app
     spec:
       containers:
-      - name: my-maven-app:v2
+      - name: my-maven-app
         image: bjgomes/maven:latest
         imagePullPolicy: Always
         ports:
