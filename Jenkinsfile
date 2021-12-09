@@ -26,9 +26,8 @@ pipeline {
         }
         stage ('K8S Deploy') {
             steps {
-                withAWS(credentials: 'AWS') {
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
+                script {
+                    kubernetesDeploy(configs: 'deployment.yaml', kubeconfigId: 'K8s')
                 }
             }
         }
