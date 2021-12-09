@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: maven_app
+  name: maven-app
 spec:
   selector:
     matchLabels:
-      app: maven_app
+      app: maven-app
   replicas: 2
 
   template:
     metadata:
       labels:
-        app: maven_app
+        app: maven-app
     spec:
       containers:
-      - name: maven_app
+      - name: maven-app
         image: bjgomes/maven
         ports:
         - containerPort: 8080
