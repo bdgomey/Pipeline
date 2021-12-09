@@ -45,6 +45,8 @@ ___
         8. cloudbees aws credentials
         9. kubernetes continiuous deploy
         10. deploy to container
+        11. AWS credentials
+        12. AWS pipeline steps
     set up global tools
         1. jdk: 
            1. Name: JAVA_HOME

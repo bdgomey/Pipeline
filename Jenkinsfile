@@ -26,14 +26,10 @@ pipeline {
         }
         stage ('K8S Deploy') {
             steps {
-                withAWS(credentials: 'AWS', region: 'us-east-2')
+                withAWS(credentials: 'AWS') {
                 sh 'kubectl apply -f deployment.yaml'
-            }
-        }
-        stage ('K8S Service') {
-            steps {
-                withAWS(credentials: 'AWS', region: 'us-east-2')
                 sh 'kubectl apply -f service.yaml'
+                }
             }
         }
     }
