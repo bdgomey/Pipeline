@@ -29,3 +29,13 @@ users:
       - name: AWS_STS_REGIONAL_ENDPOINTS
         value: regional
       provideClusterInfo: false
+
+
+
+Pipeline: 
+Step API ≥ 2.10
+Azure Commons ≥ 1.0.4
+Credentials Binding ≥ 1.16
+Credentials ≥ 2.1.14
+Docker Commons ≥ 1.10
+SSH Credentials ≥ 1.13
