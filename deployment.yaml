@@ -1,20 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: maven-app
+  name: my-maven-app
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: maven-app
-  replicas: 2
-
   template:
     metadata:
       labels:
         app: maven-app
     spec:
       containers:
-      - name: maven-app
-        image: bjgomes/maven
+      - name: my-maven-app
+        image: bjgomes/maven:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 8085
+# service type loadbalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: maven-app-svc
+spec:
+  selector:
+    app: maven-app
+  ports:
+    - protocol: TCP
+      port: 8085
+      targetPort: 8085
+  type: LoadBalancer
