@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
         DOCKERHUB_CREDENTIALS=credentials('Docker')
+        AWS=credentials('AWS')
     }
     stages {
         stage('Build image') {
@@ -25,11 +26,13 @@ pipeline {
         }
         stage ('K8S Deploy') {
             steps {
+                withAWS(credentials: 'AWS', region: 'us-east-2')
                 sh 'kubectl apply -f deployment.yaml'
             }
         }
         stage ('K8S Service') {
             steps {
+                withAWS(credentials: 'AWS', region: 'us-east-2')
                 sh 'kubectl apply -f service.yaml'
             }
         }
