@@ -42,6 +42,7 @@ ___
         5. kubernetes
         6. kubernetes cli
         7. blue ocean
+        8. AWS credentials
 
     set up global tools
         1. jdk: 
@@ -57,6 +58,7 @@ ___
 ## set-up credentials in jenkins
 
     add docker creds
+    add aws creds
 
 ___
 
