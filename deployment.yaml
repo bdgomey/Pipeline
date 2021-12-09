@@ -12,9 +12,11 @@ spec:
       labels:
         app: maven-app
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
       - name: maven-app-deploy
         image: bjgomes/maven:latest
+        imagePullPolicy: "Always"
         ports:
         - containerPort: 8085
 --- 
