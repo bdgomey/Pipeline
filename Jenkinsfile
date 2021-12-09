@@ -22,7 +22,7 @@ node ("jenkins_slave") {
        
                 kubernetesDeploy(
                     configs: 'deployment.yaml',
-                    kubeconfigId: 'K8S',
+                    kubeconfigId: 'K8s',
                     enableConfigSubstitution: true
                     )               
         }
