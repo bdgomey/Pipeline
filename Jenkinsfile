@@ -1,4 +1,4 @@
-node ("slave") {
+node ("jenkins_slave") {
   def image
   def mvnHome = tool 'Maven3'
      stage ('checkout') {
