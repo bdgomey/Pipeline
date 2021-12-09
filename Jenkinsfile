@@ -2,7 +2,7 @@ node ("jenkins_slave") {
   def image
   def mvnHome = tool 'Maven3'
      stage ('checkout') {
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: https://github.com/bdgomey/Pipeline.git]]])      
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/bdgomey/Pipeline.git']]])      
         }
    
     stage ('Build') {
