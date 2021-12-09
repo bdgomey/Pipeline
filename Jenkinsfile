@@ -5,7 +5,6 @@ pipeline {
     }
     environment {
         DOCKERHUB_CREDENTIALS=credentials('Docker')
-        AWS=credentials('AWS')
     }
     stages {
         stage('Build image') {
