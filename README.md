@@ -18,8 +18,6 @@
     export PATH=/opt/maven/bin:$PATH
     sudo service jenkins restart
     cd Pipeline
-    mkdir ~/.kube
-    cp config.yaml ~/.kube
 
 # restart terminal!!
 
