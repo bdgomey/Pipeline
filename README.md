@@ -104,6 +104,7 @@ ___
         1. make a copy of your config file and put it in a location where you can upload it in jenkins
         2. go to credentials and create a new global credential and select secret file
         3. upload your config file in the secret file and give it a name.  You will reference this in your Jenkinsfile
+        4. add kubectl context in eks (aws eks --region region update-kubeconfig --name cluster-name)
 
 ## Finalize your Jenkinsfile with the deployment to kubernetes
 
